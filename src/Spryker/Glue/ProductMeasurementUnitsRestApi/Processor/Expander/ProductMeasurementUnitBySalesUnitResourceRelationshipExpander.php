@@ -36,11 +36,6 @@ class ProductMeasurementUnitBySalesUnitResourceRelationshipExpander implements P
      */
     protected $productMeasurementUnitNameTranslator;
 
-    /**
-     * @param \Spryker\Glue\ProductMeasurementUnitsRestApi\Processor\RestResponseBuilder\ProductMeasurementUnitRestResponseBuilderInterface $productMeasurementUnitRestResponseBuilder
-     * @param \Spryker\Glue\ProductMeasurementUnitsRestApi\Dependency\Client\ProductMeasurementUnitsRestApiToProductMeasurementUnitStorageClientInterface $productMeasurementUnitStorageClient
-     * @param \Spryker\Glue\ProductMeasurementUnitsRestApi\Processor\Translator\ProductMeasurementUnitNameTranslatorInterface $productMeasurementUnitNameTranslator
-     */
     public function __construct(
         ProductMeasurementUnitRestResponseBuilderInterface $productMeasurementUnitRestResponseBuilder,
         ProductMeasurementUnitsRestApiToProductMeasurementUnitStorageClientInterface $productMeasurementUnitStorageClient,
@@ -123,11 +118,6 @@ class ProductMeasurementUnitBySalesUnitResourceRelationshipExpander implements P
         return $productMeasurementUnitCodes;
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResourceInterface $resource
-     *
-     * @return string|null
-     */
     protected function findProductMeasurementUnitCode(RestResourceInterface $resource): ?string
     {
         $restSalesUnitsAttributesTransfer = $resource->getAttributes();

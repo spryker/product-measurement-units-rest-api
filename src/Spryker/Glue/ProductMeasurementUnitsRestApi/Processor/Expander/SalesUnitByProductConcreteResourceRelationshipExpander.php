@@ -37,11 +37,6 @@ class SalesUnitByProductConcreteResourceRelationshipExpander implements SalesUni
      */
     protected $productMeasurementUnitStorageClient;
 
-    /**
-     * @param \Spryker\Glue\ProductMeasurementUnitsRestApi\Processor\RestResponseBuilder\SalesUnitRestResponseBuilderInterface $salesUnitRestResponseBuilder
-     * @param \Spryker\Glue\ProductMeasurementUnitsRestApi\Dependency\Client\ProductMeasurementUnitsRestApiToProductStorageClientInterface $productStorageClient
-     * @param \Spryker\Glue\ProductMeasurementUnitsRestApi\Dependency\Client\ProductMeasurementUnitsRestApiToProductMeasurementUnitStorageClientInterface $productMeasurementUnitStorageClient
-     */
     public function __construct(
         SalesUnitRestResponseBuilderInterface $salesUnitRestResponseBuilder,
         ProductMeasurementUnitsRestApiToProductStorageClientInterface $productStorageClient,
@@ -87,14 +82,6 @@ class SalesUnitByProductConcreteResourceRelationshipExpander implements SalesUni
         }
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResourceInterface $resource
-     * @param \Generated\Shared\Transfer\ProductConcreteProductMeasurementSalesUnitTransfer $productConcreteProductMeasurementSalesUnitTransfer
-     * @param array $productConcreteSkus
-     * @param \Generated\Shared\Transfer\ConcreteProductsRestAttributesTransfer $concreteProductsRestAttributesTransfer
-     *
-     * @return void
-     */
     protected function addSalesUnitRestResourceRelationships(
         RestResourceInterface $resource,
         ProductConcreteProductMeasurementSalesUnitTransfer $productConcreteProductMeasurementSalesUnitTransfer,

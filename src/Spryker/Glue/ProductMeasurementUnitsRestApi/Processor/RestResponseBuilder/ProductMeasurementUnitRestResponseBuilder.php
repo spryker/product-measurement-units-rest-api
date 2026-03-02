@@ -23,19 +23,11 @@ class ProductMeasurementUnitRestResponseBuilder implements ProductMeasurementUni
      */
     protected $restResourceBuilder;
 
-    /**
-     * @param \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResourceBuilderInterface $restResourceBuilder
-     */
     public function __construct(RestResourceBuilderInterface $restResourceBuilder)
     {
         $this->restResourceBuilder = $restResourceBuilder;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductMeasurementUnitTransfer $productMeasurementUnitTransfer
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createProductMeasurementUnitRestResponse(ProductMeasurementUnitTransfer $productMeasurementUnitTransfer): RestResponseInterface
     {
         return $this->restResourceBuilder->createRestResponse()->addResource(
@@ -43,11 +35,6 @@ class ProductMeasurementUnitRestResponseBuilder implements ProductMeasurementUni
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductMeasurementUnitTransfer $productMeasurementUnitTransfer
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResourceInterface
-     */
     public function createProductMeasurementUnitRestResource(ProductMeasurementUnitTransfer $productMeasurementUnitTransfer): RestResourceInterface
     {
         $restProductMeasurementUnitsAttributesTransfer = (new RestProductMeasurementUnitsAttributesTransfer())
@@ -62,9 +49,6 @@ class ProductMeasurementUnitRestResponseBuilder implements ProductMeasurementUni
         );
     }
 
-    /**
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createCodeMissingErrorResponse(): RestResponseInterface
     {
         $restErrorTransfer = (new RestErrorMessageTransfer())
@@ -75,9 +59,6 @@ class ProductMeasurementUnitRestResponseBuilder implements ProductMeasurementUni
         return $this->restResourceBuilder->createRestResponse()->addError($restErrorTransfer);
     }
 
-    /**
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createProductMeasurementUnitNotFoundErrorResponse(): RestResponseInterface
     {
         $restErrorTransfer = (new RestErrorMessageTransfer())

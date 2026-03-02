@@ -13,17 +13,8 @@ use Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface;
 
 interface SalesUnitRestResponseBuilderInterface
 {
-    /**
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createRestResponse(): RestResponseInterface;
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductMeasurementSalesUnitTransfer $productMeasurementSalesUnitTransfer
-     * @param string $concreteProductResourceId
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResourceInterface
-     */
     public function createSalesUnitRestResource(
         ProductMeasurementSalesUnitTransfer $productMeasurementSalesUnitTransfer,
         string $concreteProductResourceId
@@ -40,13 +31,7 @@ interface SalesUnitRestResponseBuilderInterface
         string $concreteProductResourceId
     ): RestResponseInterface;
 
-    /**
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createProductConcreteSkuMissingErrorResponse(): RestResponseInterface;
 
-    /**
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createProductConcreteNotFoundErrorResponse(): RestResponseInterface;
 }

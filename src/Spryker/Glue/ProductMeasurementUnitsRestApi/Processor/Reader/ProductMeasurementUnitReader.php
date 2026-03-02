@@ -35,11 +35,6 @@ class ProductMeasurementUnitReader implements ProductMeasurementUnitReaderInterf
      */
     protected $productMeasurementUnitNameTranslator;
 
-    /**
-     * @param \Spryker\Glue\ProductMeasurementUnitsRestApi\Processor\RestResponseBuilder\ProductMeasurementUnitRestResponseBuilderInterface $productMeasurementUnitRestResponseBuilder
-     * @param \Spryker\Glue\ProductMeasurementUnitsRestApi\Dependency\Client\ProductMeasurementUnitsRestApiToProductMeasurementUnitStorageClientInterface $productMeasurementUnitStorageClient
-     * @param \Spryker\Glue\ProductMeasurementUnitsRestApi\Processor\Translator\ProductMeasurementUnitNameTranslatorInterface $productMeasurementUnitNameTranslator
-     */
     public function __construct(
         ProductMeasurementUnitRestResponseBuilderInterface $productMeasurementUnitRestResponseBuilder,
         ProductMeasurementUnitsRestApiToProductMeasurementUnitStorageClientInterface $productMeasurementUnitStorageClient,
@@ -50,11 +45,6 @@ class ProductMeasurementUnitReader implements ProductMeasurementUnitReaderInterf
         $this->productMeasurementUnitNameTranslator = $productMeasurementUnitNameTranslator;
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface $restRequest
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function getProductMeasurementUnit(RestRequestInterface $restRequest): RestResponseInterface
     {
         if (!$restRequest->getResource()->getId()) {

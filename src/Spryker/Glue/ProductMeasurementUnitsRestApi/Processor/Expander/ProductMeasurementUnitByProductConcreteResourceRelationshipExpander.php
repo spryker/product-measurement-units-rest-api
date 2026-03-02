@@ -40,12 +40,6 @@ class ProductMeasurementUnitByProductConcreteResourceRelationshipExpander implem
      */
     protected $productMeasurementUnitNameTranslator;
 
-    /**
-     * @param \Spryker\Glue\ProductMeasurementUnitsRestApi\Processor\RestResponseBuilder\ProductMeasurementUnitRestResponseBuilderInterface $productMeasurementUnitRestResponseBuilder
-     * @param \Spryker\Glue\ProductMeasurementUnitsRestApi\Dependency\Client\ProductMeasurementUnitsRestApiToProductStorageClientInterface $productStorageClient
-     * @param \Spryker\Glue\ProductMeasurementUnitsRestApi\Dependency\Client\ProductMeasurementUnitsRestApiToProductMeasurementUnitStorageClientInterface $productMeasurementUnitStorageClient
-     * @param \Spryker\Glue\ProductMeasurementUnitsRestApi\Processor\Translator\ProductMeasurementUnitNameTranslatorInterface $productMeasurementUnitNameTranslator
-     */
     public function __construct(
         ProductMeasurementUnitRestResponseBuilderInterface $productMeasurementUnitRestResponseBuilder,
         ProductMeasurementUnitsRestApiToProductStorageClientInterface $productStorageClient,

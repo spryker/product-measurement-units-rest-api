@@ -27,9 +27,6 @@ class ProductMeasurementUnitsRestApiFacadeTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testMapCartItemRequestTransferToPersistentCartChangeTransferWithSalesUnitData(): void
     {
         // Arrange
@@ -57,9 +54,6 @@ class ProductMeasurementUnitsRestApiFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testMapCartItemRequestTransferToPersistentCartChangeTransferWithoutSalesUnitData(): void
     {
         // Arrange
@@ -87,9 +81,6 @@ class ProductMeasurementUnitsRestApiFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testMapCartItemRequestTransferToPersistentCartChangeTransferWithDifferentSku(): void
     {
         // Arrange

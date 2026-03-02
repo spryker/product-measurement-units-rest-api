@@ -52,9 +52,6 @@ class ProductMeasurementUnitsRestApiBusinessTester extends Actor
      */
     public const ID_PRODUCT_MEASUREMENT_SALES_UNIT_ID = '1';
 
-    /**
-     * @return \Generated\Shared\Transfer\CartItemRequestTransfer
-     */
     public function buildCartItemRequestTransferWithSalesUnitData(): CartItemRequestTransfer
     {
         $productMeasurementSalesUnitTransfer = $this->createProductMeasurementSalesUnitTransfer(
@@ -70,17 +67,11 @@ class ProductMeasurementUnitsRestApiBusinessTester extends Actor
         ))->build();
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\CartItemRequestTransfer
-     */
     public function buildCartItemRequestTransferWithOutSalesUnitData(): CartItemRequestTransfer
     {
         return (new CartItemRequestBuilder(['sku' => static::PRODUCT_CONCRETE_SKU]))->build();
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\PersistentCartChangeTransfer
-     */
     public function buildPersistentCartChangeTransfer(): PersistentCartChangeTransfer
     {
         $itemBuilder = new ItemBuilder(['sku' => static::PRODUCT_CONCRETE_SKU]);
@@ -90,9 +81,6 @@ class ProductMeasurementUnitsRestApiBusinessTester extends Actor
             ->build();
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\PersistentCartChangeTransfer
-     */
     public function buildPersistentCartChangeTransferWithDifferentSku(): PersistentCartChangeTransfer
     {
         $itemBuilder = new ItemBuilder(['sku' => static::DIFFERENT_PRODUCT_CONCRETE_SKU]);
@@ -102,11 +90,6 @@ class ProductMeasurementUnitsRestApiBusinessTester extends Actor
             ->build();
     }
 
-    /**
-     * @param int $idProductMeasurementSalesUnit
-     *
-     * @return \Generated\Shared\Transfer\ProductMeasurementSalesUnitTransfer
-     */
     public function createProductMeasurementSalesUnitTransfer(
         int $idProductMeasurementSalesUnit
     ): ProductMeasurementSalesUnitTransfer {

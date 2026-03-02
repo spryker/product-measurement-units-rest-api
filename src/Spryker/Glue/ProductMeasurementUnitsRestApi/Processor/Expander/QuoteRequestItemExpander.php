@@ -53,12 +53,6 @@ class QuoteRequestItemExpander implements QuoteRequestItemExpanderInterface
         return $restQuoteRequestsAttributesTransfers;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteRequestTransfer $quoteRequestTransfer
-     * @param \Generated\Shared\Transfer\RestQuoteRequestsAttributesTransfer $restQuoteRequestsAttributesTransfer
-     *
-     * @return bool
-     */
     protected function areTransfersValid(
         QuoteRequestTransfer $quoteRequestTransfer,
         RestQuoteRequestsAttributesTransfer $restQuoteRequestsAttributesTransfer
@@ -99,12 +93,6 @@ class QuoteRequestItemExpander implements QuoteRequestItemExpanderInterface
         return $indexedRestQuoteRequestsAttributesTransfers;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\RestQuoteRequestItemTransfer $restQuoteRequestItemTransfer
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     *
-     * @return void
-     */
     protected function setSalesUnitForRestQuoteRequestItemTransfer(
         RestQuoteRequestItemTransfer $restQuoteRequestItemTransfer,
         ItemTransfer $itemTransfer

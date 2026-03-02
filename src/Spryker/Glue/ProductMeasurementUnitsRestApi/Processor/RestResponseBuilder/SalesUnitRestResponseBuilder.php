@@ -30,10 +30,6 @@ class SalesUnitRestResponseBuilder implements SalesUnitRestResponseBuilderInterf
      */
     protected $salesUnitMapper;
 
-    /**
-     * @param \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResourceBuilderInterface $restResourceBuilder
-     * @param \Spryker\Glue\ProductMeasurementUnitsRestApi\Processor\Mapper\SalesUnitMapperInterface $salesUnitMapper
-     */
     public function __construct(
         RestResourceBuilderInterface $restResourceBuilder,
         SalesUnitMapperInterface $salesUnitMapper
@@ -42,20 +38,11 @@ class SalesUnitRestResponseBuilder implements SalesUnitRestResponseBuilderInterf
         $this->salesUnitMapper = $salesUnitMapper;
     }
 
-    /**
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createRestResponse(): RestResponseInterface
     {
         return $this->restResourceBuilder->createRestResponse();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductMeasurementSalesUnitTransfer $productMeasurementSalesUnitTransfer
-     * @param string $concreteProductResourceId
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResourceInterface
-     */
     public function createSalesUnitRestResource(
         ProductMeasurementSalesUnitTransfer $productMeasurementSalesUnitTransfer,
         string $concreteProductResourceId
@@ -99,9 +86,6 @@ class SalesUnitRestResponseBuilder implements SalesUnitRestResponseBuilderInterf
         return $restResponse;
     }
 
-    /**
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createProductConcreteSkuMissingErrorResponse(): RestResponseInterface
     {
         $restErrorTransfer = (new RestErrorMessageTransfer())
@@ -112,9 +96,6 @@ class SalesUnitRestResponseBuilder implements SalesUnitRestResponseBuilderInterf
         return $this->restResourceBuilder->createRestResponse()->addError($restErrorTransfer);
     }
 
-    /**
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function createProductConcreteNotFoundErrorResponse(): RestResponseInterface
     {
         $restErrorTransfer = (new RestErrorMessageTransfer())
@@ -125,12 +106,6 @@ class SalesUnitRestResponseBuilder implements SalesUnitRestResponseBuilderInterf
         return $this->restResourceBuilder->createRestResponse()->addError($restErrorTransfer);
     }
 
-    /**
-     * @param string $resourceId
-     * @param string $concreteProductResourceId
-     *
-     * @return string
-     */
     protected function createSelfLink(string $resourceId, string $concreteProductResourceId): string
     {
         return sprintf(

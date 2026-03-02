@@ -16,9 +16,6 @@ class ProductMeasurementUnitNameTranslator implements ProductMeasurementUnitName
      */
     protected $glossaryStorageClient;
 
-    /**
-     * @param \Spryker\Glue\ProductMeasurementUnitsRestApi\Dependency\Client\ProductMeasurementUnitsRestApiToGlossaryStorageClientInterface $glossaryStorageClient
-     */
     public function __construct(ProductMeasurementUnitsRestApiToGlossaryStorageClientInterface $glossaryStorageClient)
     {
         $this->glossaryStorageClient = $glossaryStorageClient;

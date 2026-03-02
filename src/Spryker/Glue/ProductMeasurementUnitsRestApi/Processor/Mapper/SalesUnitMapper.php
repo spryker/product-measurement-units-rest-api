@@ -18,12 +18,6 @@ use Generated\Shared\Transfer\RestSalesUnitsAttributesTransfer;
 
 class SalesUnitMapper implements SalesUnitMapperInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\ProductMeasurementSalesUnitTransfer $productMeasurementSalesUnitTransfer
-     * @param \Generated\Shared\Transfer\RestSalesUnitsAttributesTransfer $restSalesUnitsAttributesTransfer
-     *
-     * @return \Generated\Shared\Transfer\RestSalesUnitsAttributesTransfer
-     */
     public function mapProductMeasurementSalesUnitTransferToRestSalesUnitsAttributesTransfer(
         ProductMeasurementSalesUnitTransfer $productMeasurementSalesUnitTransfer,
         RestSalesUnitsAttributesTransfer $restSalesUnitsAttributesTransfer
@@ -33,12 +27,6 @@ class SalesUnitMapper implements SalesUnitMapperInterface
             ->setProductMeasurementUnitCode($productMeasurementSalesUnitTransfer->getProductMeasurementUnit()->getCode());
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     * @param \Generated\Shared\Transfer\RestItemsAttributesTransfer $restItemsAttributesTransfer
-     *
-     * @return \Generated\Shared\Transfer\RestItemsAttributesTransfer
-     */
     public function mapItemTransferToRestItemsAttributesTransfer(
         ItemTransfer $itemTransfer,
         RestItemsAttributesTransfer $restItemsAttributesTransfer
@@ -55,12 +43,6 @@ class SalesUnitMapper implements SalesUnitMapperInterface
         return $restItemsAttributesTransfer->setSalesUnit($restCartItemsSalesUnitAttributesTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     * @param \Generated\Shared\Transfer\RestOrderItemsAttributesTransfer $restOrderItemsAttributesTransfer
-     *
-     * @return \Generated\Shared\Transfer\RestOrderItemsAttributesTransfer
-     */
     public function mapItemTransferToRestOrderItemsAttributesTransfer(
         ItemTransfer $itemTransfer,
         RestOrderItemsAttributesTransfer $restOrderItemsAttributesTransfer

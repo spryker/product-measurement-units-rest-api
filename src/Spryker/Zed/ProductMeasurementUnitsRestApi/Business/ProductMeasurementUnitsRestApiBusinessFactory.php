@@ -16,9 +16,6 @@ use Spryker\Zed\ProductMeasurementUnitsRestApi\Business\Mapper\SalesUnitMapperIn
  */
 class ProductMeasurementUnitsRestApiBusinessFactory extends AbstractBusinessFactory
 {
-    /**
-     * @return \Spryker\Zed\ProductMeasurementUnitsRestApi\Business\Mapper\SalesUnitMapperInterface
-     */
     public function createSalesUnitMapper(): SalesUnitMapperInterface
     {
         return new SalesUnitMapper();

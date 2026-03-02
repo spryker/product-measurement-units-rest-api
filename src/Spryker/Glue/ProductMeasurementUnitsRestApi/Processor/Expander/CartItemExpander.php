@@ -12,12 +12,6 @@ use Generated\Shared\Transfer\RestCartItemsAttributesTransfer;
 
 class CartItemExpander implements CartItemExpanderInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\CartItemRequestTransfer $cartItemRequestTransfer
-     * @param \Generated\Shared\Transfer\RestCartItemsAttributesTransfer $restCartItemsAttributesTransfer
-     *
-     * @return \Generated\Shared\Transfer\CartItemRequestTransfer
-     */
     public function expand(
         CartItemRequestTransfer $cartItemRequestTransfer,
         RestCartItemsAttributesTransfer $restCartItemsAttributesTransfer

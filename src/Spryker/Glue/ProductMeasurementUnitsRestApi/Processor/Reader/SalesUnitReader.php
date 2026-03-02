@@ -36,11 +36,6 @@ class SalesUnitReader implements SalesUnitReaderInterface
      */
     protected $productStorageClient;
 
-    /**
-     * @param \Spryker\Glue\ProductMeasurementUnitsRestApi\Processor\RestResponseBuilder\SalesUnitRestResponseBuilderInterface $salesUnitRestResponseBuilder
-     * @param \Spryker\Glue\ProductMeasurementUnitsRestApi\Dependency\Client\ProductMeasurementUnitsRestApiToProductMeasurementUnitStorageClientInterface $productMeasurementUnitStorageClient
-     * @param \Spryker\Glue\ProductMeasurementUnitsRestApi\Dependency\Client\ProductMeasurementUnitsRestApiToProductStorageClientInterface $productStorageClient
-     */
     public function __construct(
         SalesUnitRestResponseBuilderInterface $salesUnitRestResponseBuilder,
         ProductMeasurementUnitsRestApiToProductMeasurementUnitStorageClientInterface $productMeasurementUnitStorageClient,
@@ -51,11 +46,6 @@ class SalesUnitReader implements SalesUnitReaderInterface
         $this->productStorageClient = $productStorageClient;
     }
 
-    /**
-     * @param \Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface $restRequest
-     *
-     * @return \Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface
-     */
     public function getSalesUnits(RestRequestInterface $restRequest): RestResponseInterface
     {
         $parentResource = $restRequest->findParentResourceByType(ProductMeasurementUnitsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS);
