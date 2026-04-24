@@ -19,10 +19,14 @@
         "spryker/transfer": "^3.42.0"
     },
     "require-dev": {
+        "spryker/api-platform": "^1.0.0",
         "spryker/code-sniffer": "*",
         "spryker/decimal-object": "*",
         "spryker/propel": "*",
         "spryker/testify": "*"
+    },
+    "suggest": {
+        "spryker/api-platform": "Required to expose API Platform resources."
     },
     "autoload": {
         "psr-4": {

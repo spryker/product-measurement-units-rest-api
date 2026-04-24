@@ -22,6 +22,7 @@
     <transfer name="ProductMeasurementUnit">
         <property name="code" type="string" description="A unique code, often for currency, country, or barcode."/>
         <property name="name" type="string" description="The name of an entity (e.g., user, category, product, role)."/>
+        <property name="defaultPrecision" type="int" description="The default precision for a measurement unit."/>
     </transfer>
 
     <transfer name="ProductMeasurementSalesUnit">
@@ -29,6 +30,14 @@
         <property name="idProductMeasurementSalesUnit" type="int"/>
         <property name="value" type="int" description="A generic value for a property, often used in key-value pairs or translations."/>
         <property name="productMeasurementUnit" type="ProductMeasurementUnit" description="A unit of measurement for a product."/>
+        <property name="conversion" type="float" description="The conversion factor between a sales unit and a base unit."/>
+        <property name="precision" type="int" description="The total number of digits in a decimal value."/>
+        <property name="isDisplayed" type="bool" description="A flag indicating if a sales unit should be displayed to the customer."/>
+        <property name="isDefault" type="bool" description="A flag indicating if an entity is the default one."/>
+    </transfer>
+
+    <transfer name="Locale">
+        <property name="localeName" type="string" description="The name of a locale, such as 'en_US' or 'de_DE'."/>
     </transfer>
 
     <transfer name="CartItemRequest">

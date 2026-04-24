@@ -1,0 +1,40 @@
+resource:
+    name: ProductMeasurementUnits
+    shortName: product-measurement-units
+    description: 'Storefront product measurement units'
+
+    provider: Spryker\Glue\ProductMeasurementUnitsRestApi\Api\Storefront\Provider\ProductMeasurementUnitsStorefrontProvider
+
+    paginationEnabled: false
+
+    operations:
+        - type: Get
+          description: 'Retrieve a product measurement unit by code'
+
+    properties:
+        code:
+            type: string
+            identifier: true
+            writable: false
+            readable: true
+            description: 'Measurement unit code'
+            openapiContext:
+                example: 'KGM'
+
+        name:
+            type: string
+            writable: false
+            readable: true
+            required: false
+            description: 'Measurement unit name'
+            openapiContext:
+                example: 'Kilogram'
+
+        defaultPrecision:
+            type: integer
+            writable: false
+            readable: true
+            required: false
+            description: 'Default precision'
+            openapiContext:
+                example: 1000

@@ -1,0 +1,86 @@
+resource:
+    name: SalesUnits
+    shortName: sales-units
+    description: 'Storefront sales units for concrete products'
+
+    provider: Spryker\Glue\ProductMeasurementUnitsRestApi\Api\Storefront\Provider\SalesUnitsStorefrontProvider
+
+    paginationEnabled: false
+
+    operations:
+        - type: GetCollection
+          uriTemplate: /concrete-products/{concreteProductSku}/sales-units
+          description: 'Retrieve sales units for a concrete product'
+          uriVariables:
+              concreteProductSku:
+                  fromClass: ConcreteProductsStorefrontResource
+                  identifiers:
+                      - concreteProductSku
+
+    includableIn:
+        - resource: ConcreteProducts
+          relationshipName: sales-units
+          uriVariableMappings:
+              sku: concreteProductSku
+
+    includes:
+        - relationshipName: product-measurement-units
+          targetResource: ProductMeasurementUnits
+          uriTemplate: /product-measurement-units/{code}
+          uriVariableMappings:
+              productMeasurementUnitCode: code
+
+    properties:
+        idProductMeasurementSalesUnit:
+            type: string
+            identifier: true
+            writable: false
+            readable: true
+            description: 'Sales unit identifier'
+            openapiContext:
+                example: '33'
+
+        conversion:
+            type: integer
+            writable: false
+            readable: true
+            required: false
+            description: 'Conversion factor'
+            openapiContext:
+                example: 1
+
+        precision:
+            type: integer
+            writable: false
+            readable: true
+            required: false
+            description: 'Precision'
+            openapiContext:
+                example: 1000
+
+        isDisplayed:
+            type: boolean
+            writable: false
+            readable: true
+            required: false
+            description: 'Flag if the sales unit is displayed to the customer'
+            openapiContext:
+                example: true
+
+        isDefault:
+            type: boolean
+            writable: false
+            readable: true
+            required: false
+            description: 'Flag if this is the default sales unit'
+            openapiContext:
+                example: true
+
+        productMeasurementUnitCode:
+            type: string
+            writable: false
+            readable: true
+            required: false
+            description: 'Associated measurement unit code'
+            openapiContext:
+                example: 'KGM'
