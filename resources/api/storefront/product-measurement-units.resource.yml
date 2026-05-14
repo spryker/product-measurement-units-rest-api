@@ -9,7 +9,29 @@ resource:
 
     operations:
         - type: Get
-          description: 'Retrieve a product measurement unit by code'
+          description: 'Retrieve a product measurement unit by its code.'
+          openapiContext:
+              summary: 'Get product measurement unit'
+              responses:
+                  200:
+                      description: 'Product measurement unit returned.'
+                  400:
+                      description: 'Product measurement unit code has not been specified (code 3401).'
+                  404:
+                      description: 'Product measurement unit is not found (code 3402).'
+
+        # Validation route so `GET /product-measurement-units` (no code) hits provideCollection() which throws legacy 400/3401.
+        # The operation is named for the route shape (a collection endpoint), so a future real list
+        # implementation can take over the body without renaming the operation.
+        - type: GetCollection
+          name: getProductMeasurementUnitCollection
+          uriTemplate: '/product-measurement-units'
+          description: 'Returns 400 when called without the product measurement unit code.'
+          openapiContext:
+              summary: 'Returns 400 when product measurement unit code is missing'
+              responses:
+                  400:
+                      description: 'Product measurement unit code has not been specified (code 3401).'
 
     properties:
         code:

@@ -11,12 +11,10 @@ namespace Spryker\Glue\ProductMeasurementUnitsRestApi\Api\Storefront\Provider;
 
 use Generated\Api\Storefront\SalesUnitsStorefrontResource;
 use Generated\Shared\Transfer\ProductMeasurementSalesUnitTransfer;
-use Spryker\ApiPlatform\Exception\GlueApiException;
 use Spryker\ApiPlatform\State\Provider\AbstractStorefrontProvider;
 use Spryker\Client\ProductMeasurementUnitStorage\ProductMeasurementUnitStorageClientInterface;
 use Spryker\Client\ProductStorage\ProductStorageClientInterface;
-use Spryker\Glue\ProductMeasurementUnitsRestApi\ProductMeasurementUnitsRestApiConfig;
-use Symfony\Component\HttpFoundation\Response;
+use Spryker\Glue\ProductMeasurementUnitsRestApi\Api\Storefront\Exception\ProductMeasurementUnitsExceptionFactory;
 
 class SalesUnitsStorefrontProvider extends AbstractStorefrontProvider
 {
@@ -27,22 +25,25 @@ class SalesUnitsStorefrontProvider extends AbstractStorefrontProvider
     public function __construct(
         protected ProductStorageClientInterface $productStorageClient,
         protected ProductMeasurementUnitStorageClientInterface $productMeasurementUnitStorageClient,
+        protected ProductMeasurementUnitsExceptionFactory $exceptionFactory,
     ) {
     }
 
     /**
+     * @throws \Spryker\ApiPlatform\Exception\GlueApiException
+     *
      * @return array<\Generated\Api\Storefront\SalesUnitsStorefrontResource>
      */
     protected function provideCollection(): array
     {
         if (!$this->hasUriVariable(static::URI_VAR_CONCRETE_SKU)) {
-            $this->throwMissingConcreteProductSku();
+            throw $this->exceptionFactory->createConcreteProductSkuMissingException();
         }
 
         $sku = (string)$this->getUriVariable(static::URI_VAR_CONCRETE_SKU);
 
         if ($sku === '') {
-            $this->throwMissingConcreteProductSku();
+            throw $this->exceptionFactory->createConcreteProductSkuMissingException();
         }
 
         $localeName = $this->getLocale()->getLocaleNameOrFail();
@@ -53,7 +54,7 @@ class SalesUnitsStorefrontProvider extends AbstractStorefrontProvider
         );
 
         if ($productConcreteIds === []) {
-            return [];
+            throw $this->exceptionFactory->createConcreteProductNotFoundException();
         }
 
         $productConcreteMeasurementSalesUnitTransfers = $this->productMeasurementUnitStorageClient
@@ -64,6 +65,7 @@ class SalesUnitsStorefrontProvider extends AbstractStorefrontProvider
         }
 
         $resources = [];
+
         foreach ($productConcreteMeasurementSalesUnitTransfers as $concreteMeasurementTransfer) {
             foreach ($concreteMeasurementTransfer->getProductMeasurementSalesUnits() as $salesUnit) {
                 $resources[] = $this->mapSalesUnitToResource($salesUnit);
@@ -71,20 +73,6 @@ class SalesUnitsStorefrontProvider extends AbstractStorefrontProvider
         }
 
         return $resources;
-    }
-
-    /**
-     * @throws \Spryker\ApiPlatform\Exception\GlueApiException
-     *
-     * @return never
-     */
-    protected function throwMissingConcreteProductSku(): void
-    {
-        throw new GlueApiException(
-            Response::HTTP_BAD_REQUEST,
-            ProductMeasurementUnitsRestApiConfig::RESPONSE_CODE_CONCRETE_PRODUCT_SKU_IS_NOT_SPECIFIED,
-            ProductMeasurementUnitsRestApiConfig::RESPONSE_DETAIL_CONCRETE_PRODUCT_SKU_IS_NOT_SPECIFIED,
-        );
     }
 
     protected function mapSalesUnitToResource(ProductMeasurementSalesUnitTransfer $salesUnit): SalesUnitsStorefrontResource

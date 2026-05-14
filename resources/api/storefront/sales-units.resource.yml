@@ -10,12 +10,21 @@ resource:
     operations:
         - type: GetCollection
           uriTemplate: /concrete-products/{concreteProductSku}/sales-units
-          description: 'Retrieve sales units for a concrete product'
+          description: 'Retrieve the sales units configured for the given concrete product.'
           uriVariables:
               concreteProductSku:
                   fromClass: ConcreteProductsStorefrontResource
                   identifiers:
                       - concreteProductSku
+          openapiContext:
+              summary: 'Get sales units of a concrete product'
+              responses:
+                  200:
+                      description: 'Sales units returned.'
+                  400:
+                      description: 'Concrete product sku is not specified (code 312).'
+                  404:
+                      description: 'Concrete product is not found (code 302).'
 
     includableIn:
         - resource: ConcreteProducts

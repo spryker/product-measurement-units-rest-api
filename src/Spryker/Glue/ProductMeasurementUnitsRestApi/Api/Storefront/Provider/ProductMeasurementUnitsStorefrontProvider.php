@@ -13,6 +13,7 @@ use Generated\Api\Storefront\ProductMeasurementUnitsStorefrontResource;
 use Generated\Shared\Transfer\ProductMeasurementUnitTransfer;
 use Spryker\ApiPlatform\State\Provider\AbstractStorefrontProvider;
 use Spryker\Client\ProductMeasurementUnitStorage\ProductMeasurementUnitStorageClientInterface;
+use Spryker\Glue\ProductMeasurementUnitsRestApi\Api\Storefront\Exception\ProductMeasurementUnitsExceptionFactory;
 
 class ProductMeasurementUnitsStorefrontProvider extends AbstractStorefrontProvider
 {
@@ -22,19 +23,23 @@ class ProductMeasurementUnitsStorefrontProvider extends AbstractStorefrontProvid
 
     public function __construct(
         protected ProductMeasurementUnitStorageClientInterface $productMeasurementUnitStorageClient,
+        protected ProductMeasurementUnitsExceptionFactory $exceptionFactory,
     ) {
     }
 
+    /**
+     * @throws \Spryker\ApiPlatform\Exception\GlueApiException
+     */
     protected function provideItem(): ?object
     {
         if (!$this->hasUriVariable(static::URI_VAR_CODE)) {
-            return null;
+            throw $this->exceptionFactory->createProductMeasurementUnitCodeMissingException();
         }
 
         $code = (string)$this->getUriVariable(static::URI_VAR_CODE);
 
         if ($code === '') {
-            return null;
+            throw $this->exceptionFactory->createProductMeasurementUnitCodeMissingException();
         }
 
         $productMeasurementUnits = $this->productMeasurementUnitStorageClient->getProductMeasurementUnitsByMapping(
@@ -43,10 +48,22 @@ class ProductMeasurementUnitsStorefrontProvider extends AbstractStorefrontProvid
         );
 
         if ($productMeasurementUnits === []) {
-            return null;
+            throw $this->exceptionFactory->createProductMeasurementUnitNotFoundException();
         }
 
         return $this->mapUnitToResource(reset($productMeasurementUnits));
+    }
+
+    /**
+     * Validation route: `GET /product-measurement-units` (no code) → legacy 400/3401.
+     *
+     * @throws \Spryker\ApiPlatform\Exception\GlueApiException
+     *
+     * @return array<\Generated\Api\Storefront\ProductMeasurementUnitsStorefrontResource>
+     */
+    protected function provideCollection(): array
+    {
+        throw $this->exceptionFactory->createProductMeasurementUnitCodeMissingException();
     }
 
     protected function mapUnitToResource(ProductMeasurementUnitTransfer $unit): ProductMeasurementUnitsStorefrontResource
