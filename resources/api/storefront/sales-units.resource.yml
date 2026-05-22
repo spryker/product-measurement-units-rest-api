@@ -26,12 +26,6 @@ resource:
                   404:
                       description: 'Concrete product is not found (code 302).'
 
-    includableIn:
-        - resource: ConcreteProducts
-          relationshipName: sales-units
-          uriVariableMappings:
-              sku: concreteProductSku
-
     includes:
         - relationshipName: product-measurement-units
           targetResource: ProductMeasurementUnits
