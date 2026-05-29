@@ -1,0 +1,22 @@
+resource:
+    name: GuestCartItems
+    shortName: guest-cart-items
+
+    properties:
+        idProductMeasurementSalesUnit:
+            type: string
+            writable: false
+            readable: true
+            required: false
+            description: 'Selected sales unit identifier'
+
+        salesUnit:
+            type: mixed
+            writable: true
+            readable: true
+            required: false
+            description: 'Sales-unit selection for products priced by a measurement unit (e.g. kg, m, L). Carries the sales-unit identifier and the chosen amount in that unit; required when adding/updating items of measurable products.'
+            openapiContext:
+                example:
+                    id: 1
+                    amount: 5
