@@ -11,12 +11,20 @@ resource:
             description: 'Selected sales unit identifier'
 
         salesUnit:
-            type: mixed
+            type: object
+            objectName: SalesUnit
             writable: true
             readable: true
             required: false
             description: 'Sales-unit selection for products priced by a measurement unit (e.g. kg, m, L). Carries the sales-unit identifier and the chosen amount in that unit; required when adding/updating items of measurable products.'
-            openapiContext:
-                example:
-                    id: 1
-                    amount: 5
+            properties:
+                id:
+                    type: integer
+                    description: 'Sales-unit identifier.'
+                    openapiContext:
+                        example: 1
+                amount:
+                    type: integer
+                    description: 'Chosen amount in the sales unit.'
+                    openapiContext:
+                        example: 5
