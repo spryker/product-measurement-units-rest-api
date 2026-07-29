@@ -24,7 +24,7 @@ resource:
                     openapiContext:
                         example: 1
                 amount:
-                    type: integer
-                    description: 'Chosen amount in the sales unit.'
+                    type: string
+                    description: 'Chosen amount in the sales unit, as a decimal string to preserve its scale.'
                     openapiContext:
-                        example: 5
+                        example: '1.5'
