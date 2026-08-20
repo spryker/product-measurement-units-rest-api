@@ -15,8 +15,6 @@ resource:
               responses:
                   200:
                       description: 'Product measurement unit returned.'
-                  400:
-                      description: 'Product measurement unit code has not been specified (code 3401).'
                   404:
                       description: 'Product measurement unit is not found (code 3402).'
 
