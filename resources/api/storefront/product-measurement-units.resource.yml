@@ -24,6 +24,7 @@ resource:
         - type: GetCollection
           name: getProductMeasurementUnitCollection
           uriTemplate: '/product-measurement-units'
+          openapi: false
           description: 'Returns 400 when called without the product measurement unit code.'
           openapiContext:
               summary: 'Returns 400 when product measurement unit code is missing'
