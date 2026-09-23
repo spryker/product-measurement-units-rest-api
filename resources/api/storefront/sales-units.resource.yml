@@ -16,6 +16,9 @@ resource:
                   fromClass: ConcreteProductsStorefrontResource
                   identifiers:
                       - concreteProductSku
+          extraProperties:
+              notFoundCode: '302'
+              notFoundMessage: 'Concrete product is not found.'
           openapiContext:
               summary: 'Get sales units of a concrete product'
               responses:

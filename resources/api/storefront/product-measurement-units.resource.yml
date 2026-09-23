@@ -10,6 +10,9 @@ resource:
     operations:
         - type: Get
           description: 'Retrieve a product measurement unit by its code.'
+          extraProperties:
+              notFoundCode: '3402'
+              notFoundMessage: 'Product measurement unit not found.'
           openapiContext:
               summary: 'Get product measurement unit'
               responses:
