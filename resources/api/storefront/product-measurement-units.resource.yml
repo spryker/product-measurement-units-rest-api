@@ -8,6 +8,8 @@ resource:
     paginationEnabled: false
 
     operations:
+        # The provider's missing-code 400 is unreachable here: the router never matches this
+        # template with an empty {code} segment, so a code-less call lands on the collection below.
         - type: Get
           description: 'Retrieve a product measurement unit by its code.'
           extraProperties:

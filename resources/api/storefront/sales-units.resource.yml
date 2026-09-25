@@ -8,6 +8,8 @@ resource:
     paginationEnabled: false
 
     operations:
+        # The provider's missing-sku 400 is unreachable on this template — there is no sku-less
+        # route to sales units, and the router never matches an empty {concreteProductSku} segment.
         - type: GetCollection
           uriTemplate: /concrete-products/{concreteProductSku}/sales-units
           description: 'Retrieve the sales units configured for the given concrete product.'
