@@ -8,7 +8,8 @@ resource:
             writable: false
             readable: true
             required: false
-            description: 'Selected sales unit identifier'
+            responseOptional: true
+            description: 'Selected sales unit identifier. Answered only for an item of a product sold in a measurement unit; an item of a plain product carries none.'
 
         salesUnit:
             type: object
@@ -16,7 +17,8 @@ resource:
             writable: true
             readable: true
             required: false
-            description: 'Sales-unit selection for products priced by a measurement unit (e.g. kg, m, L). Carries the sales-unit identifier and the chosen amount in that unit; required when adding/updating items of measurable products.'
+            responseOptional: true
+            description: 'Sales-unit selection for products priced by a measurement unit (e.g. kg, m, L). Carries the sales-unit identifier and the chosen amount in that unit; required when adding/updating items of measurable products. Answered only for such an item; an item of a plain product carries none.'
             properties:
                 id:
                     type: integer
