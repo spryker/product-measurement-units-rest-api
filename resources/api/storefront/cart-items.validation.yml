@@ -1,0 +1,14 @@
+post:
+    salesUnit:
+        - Optional:
+              constraints:
+                  - Collection:
+                        allowExtraFields: true
+                        fields:
+                            amount:
+                                - Optional:
+                                      constraints:
+                                          - Type:
+                                                type: numeric
+                                          - GreaterThan:
+                                                value: 0
