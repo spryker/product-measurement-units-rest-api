@@ -15,6 +15,7 @@ resource:
             type: object
             objectName: SalesUnit
             writable: true
+            writableOn: ['Post']
             readable: true
             required: false
             responseOptional: true
